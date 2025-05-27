@@ -6,7 +6,7 @@ from dotenv import dotenv_values
 import telebot as tb
 import random, requests
 
-TOKEN:str = '8153119358:AAG3WjdtvX-QRdmpVHN2ssXghyxD-QUeQyQ'
+TOKEN:str = '' # Ключ был убран ради безопасности. И кста, старый уже не активен, так что ):
 bot = tb.TeleBot(TOKEN)
 
 class TrofimBot:
