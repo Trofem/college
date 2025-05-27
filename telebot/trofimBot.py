@@ -1,12 +1,13 @@
 '''
     Телеграм бот на основе telebot. Написан @TrofimAl
     Ссылка на бота: @trofem_bot
+    Вам необходимо самостоятельно создать .env файл или ввести строку в переменную TOKEN:str
 '''
 from dotenv import dotenv_values
 import telebot as tb
 import random, requests
 
-TOKEN:str = '8153119358:AAG3WjdtvX-QRdmpVHN2ssXghyxD-QUeQyQ'
+TOKEN:str = dotenv_values('.env')["TOKEN"]
 bot = tb.TeleBot(TOKEN)
 
 class TrofimBot:
@@ -91,7 +92,7 @@ class TrofimBot:
         def send_api_request(message):
             ''' Информация о боте '''
             api_request = requests.get(self.telegram_api_url).json()
-            res = f"  - {'\n - '.join([ f"{fact}: {content}" for fact, content in api_request.items()])}\n - {self.bot_commands['api']['content']}\n - {self.telegram_api_url}"
+            res = f"Результат:\n - {'\n - '.join([ f"{fact}: {content}" for fact, content in api_request.items()])}\n - {self.bot_commands['api']['content']}\n - {self.telegram_api_url}"
             
             bot.reply_to(message, res, reply_markup=self.markup_main)
 
